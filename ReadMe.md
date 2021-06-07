@@ -16,7 +16,7 @@ Then click deploy! For a guide with pictures please follow the link to our [GitH
 ### New Relic
 
 - New Relic Firehose Endpoint: `https://aws-api.newrelic.com/firehose/v1`
-- NewRelicKey: New Relic Insight insert API key
+- NewRelicKey: [New Relic Insight insert API key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#insights-insert-key)
 ## Post-Deploy Steps
 
 ### Whitelisting your CloudFront URL
