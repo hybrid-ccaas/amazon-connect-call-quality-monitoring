@@ -1,0 +1,368 @@
+{
+    "name": "AWS Connect Call Quality",
+    "description": "AWS Connect Call Quality",
+    "permissions": "PUBLIC_READ_WRITE",
+    "pages": [
+        {
+            "name": "Softphone Stream Stats - Agent Details",
+            "description": null,
+            "widgets": [
+                {
+                    "visualization": {
+                        "id": "viz.bar"
+                    },
+                    "layout": {
+                        "column": 1,
+                        "row": 1,
+                        "height": 3,
+                        "width": 3
+                    },
+                    "title": "Calls By Agent",
+                    "rawConfiguration": {
+                        "facet": {
+                            "showOtherSeries": false
+                        },
+                        "nrqlQueries": [
+                            {
+                                "accountId": 999999,
+                                "query": "FROM Log select uniqueCount(ContactId) facet Agent.Username since 1 hour ago"
+                            }
+                        ]
+                    },
+                    "linkedEntityGuids": null
+                },
+                {
+                    "visualization": {
+                        "id": "viz.area"
+                    },
+                    "layout": {
+                        "column": 4,
+                        "row": 1,
+                        "height": 3,
+                        "width": 4
+                    },
+                    "title": "Talking Time",
+                    "rawConfiguration": {
+                        "facet": {
+                            "showOtherSeries": false
+                        },
+                        "legend": {
+                            "enabled": true
+                        },
+                        "nrqlQueries": [
+                            {
+                                "accountId": 999999,
+                                "query": "from Log select average(`report.talkingTimeMillis`)/1000 where nriMetricType='softphonecallreport' TIMESERIES since 1 hour ago"
+                            }
+                        ],
+                        "yAxisLeft": {
+                            "zero": true
+                        }
+                    },
+                    "linkedEntityGuids": null
+                },
+                {
+                    "visualization": {
+                        "id": "viz.area"
+                    },
+                    "layout": {
+                        "column": 8,
+                        "row": 1,
+                        "height": 3,
+                        "width": 5
+                    },
+                    "title": "packetsLost",
+                    "rawConfiguration": {
+                        "facet": {
+                            "showOtherSeries": false
+                        },
+                        "legend": {
+                            "enabled": true
+                        },
+                        "nrqlQueries": [
+                            {
+                                "accountId": 999999,
+                                "query": "FROM Log select average(packetsLost) facet softphoneStreamType TIMESERIES  since 1 hour ago"
+                            }
+                        ],
+                        "yAxisLeft": {
+                            "zero": true
+                        }
+                    },
+                    "linkedEntityGuids": null
+                },
+                {
+                    "visualization": {
+                        "id": "viz.bar"
+                    },
+                    "layout": {
+                        "column": 1,
+                        "row": 4,
+                        "height": 3,
+                        "width": 3
+                    },
+                    "title": "CTR Contact Number(CTR)",
+                    "rawConfiguration": {
+                        "dataFormatters": [],
+                        "facet": {
+                            "showOtherSeries": false
+                        },
+                        "nrqlQueries": [
+                            {
+                                "accountId": 999999,
+                                "query": "SELECT uniqueCount(ContactId) FROM Log FACET InitiationMethod"
+                            }
+                        ]
+                    },
+                    "linkedEntityGuids": null
+                },
+                {
+                    "visualization": {
+                        "id": "viz.line"
+                    },
+                    "layout": {
+                        "column": 4,
+                        "row": 4,
+                        "height": 3,
+                        "width": 4
+                    },
+                    "title": "roundTripTimeMillis",
+                    "rawConfiguration": {
+                        "facet": {
+                            "showOtherSeries": false
+                        },
+                        "legend": {
+                            "enabled": true
+                        },
+                        "nrqlQueries": [
+                            {
+                                "accountId": 999999,
+                                "query": "FROM Log select average(roundTripTimeMillis),max(roundTripTimeMillis),min(roundTripTimeMillis) TIMESERIES  since 1 hour ago"
+                            }
+                        ],
+                        "yAxisLeft": {
+                            "zero": true
+                        }
+                    },
+                    "linkedEntityGuids": null
+                },
+                {
+                    "visualization": {
+                        "id": "viz.area"
+                    },
+                    "layout": {
+                        "column": 8,
+                        "row": 4,
+                        "height": 3,
+                        "width": 5
+                    },
+                    "title": "packetsCount",
+                    "rawConfiguration": {
+                        "facet": {
+                            "showOtherSeries": false
+                        },
+                        "legend": {
+                            "enabled": true
+                        },
+                        "nrqlQueries": [
+                            {
+                                "accountId": 999999,
+                                "query": "FROM Log select average(packetsCount) facet softphoneStreamType TIMESERIES   since 1 hour ago"
+                            }
+                        ]
+                    },
+                    "linkedEntityGuids": null
+                },
+                {
+                    "visualization": {
+                        "id": "viz.bar"
+                    },
+                    "layout": {
+                        "column": 1,
+                        "row": 7,
+                        "height": 3,
+                        "width": 3
+                    },
+                    "title": "Contacts (CTR)",
+                    "rawConfiguration": {
+                        "dataFormatters": [],
+                        "facet": {
+                            "showOtherSeries": false
+                        },
+                        "nrqlQueries": [
+                            {
+                                "accountId": 999999,
+                                "query": "SELECT  latest(CustomerEndpoint.Address) FROM Log facet ContactId since 1 hour ago"
+                            }
+                        ]
+                    },
+                    "linkedEntityGuids": null
+                },
+                {
+                    "visualization": {
+                        "id": "viz.area"
+                    },
+                    "layout": {
+                        "column": 4,
+                        "row": 7,
+                        "height": 3,
+                        "width": 4
+                    },
+                    "title": "jitterBufferMillis",
+                    "rawConfiguration": {
+                        "facet": {
+                            "showOtherSeries": false
+                        },
+                        "legend": {
+                            "enabled": true
+                        },
+                        "nrqlQueries": [
+                            {
+                                "accountId": 999999,
+                                "query": "FROM Log select average(jitterBufferMillis) TIMESERIES  since 1 hour ago"
+                            }
+                        ]
+                    },
+                    "linkedEntityGuids": null
+                },
+                {
+                    "visualization": {
+                        "id": "viz.area"
+                    },
+                    "layout": {
+                        "column": 8,
+                        "row": 7,
+                        "height": 3,
+                        "width": 5
+                    },
+                    "title": "audioLevel",
+                    "rawConfiguration": {
+                        "facet": {
+                            "showOtherSeries": false
+                        },
+                        "legend": {
+                            "enabled": true
+                        },
+                        "nrqlQueries": [
+                            {
+                                "accountId": 999999,
+                                "query": "FROM Log select average(audioLevel) facet softphoneStreamType TIMESERIES  since 1 hour ago"
+                            }
+                        ]
+                    },
+                    "linkedEntityGuids": null
+                },
+                {
+                    "visualization": {
+                        "id": "viz.table"
+                    },
+                    "layout": {
+                        "column": 1,
+                        "row": 10,
+                        "height": 3,
+                        "width": 12
+                    },
+                    "title": "softphonecallreport Details",
+                    "rawConfiguration": {
+                        "dataFormatters": [],
+                        "facet": {
+                            "showOtherSeries": false
+                        },
+                        "nrqlQueries": [
+                            {
+                                "accountId": 999999,
+                                "query": "FROM Log select * where nriDomain='AWSConnect' and nriMetricType='softphonecallreport'  since 1 hour ago"
+                            }
+                        ]
+                    },
+                    "linkedEntityGuids": null
+                },
+                {
+                    "visualization": {
+                        "id": "viz.table"
+                    },
+                    "layout": {
+                        "column": 1,
+                        "row": 13,
+                        "height": 3,
+                        "width": 12
+                    },
+                    "title": "CTR Record",
+                    "rawConfiguration": {
+                        "dataFormatters": [],
+                        "facet": {
+                            "showOtherSeries": false
+                        },
+                        "nrqlQueries": [
+                            {
+                                "accountId": 999999,
+                                "query": "SELECT * FROM Log since 1 hour ago"
+                            }
+                        ]
+                    },
+                    "linkedEntityGuids": null
+                }
+            ]
+        },
+        {
+            "name": "Contact Center Overview1",
+            "description": null,
+            "widgets": [
+                {
+                    "visualization": {
+                        "id": "viz.line"
+                    },
+                    "layout": {
+                        "column": 1,
+                        "row": 1,
+                        "height": 3,
+                        "width": 3
+                    },
+                    "title": "Available Agents",
+                    "rawConfiguration": {
+                        "legend": {
+                            "enabled": true
+                        },
+                        "nrqlQueries": [
+                            {
+                                "accountId": 999999,
+                                "query": "from Log SELECT uniqueCount(CurrentAgentSnapshot.Configuration.Username) AS 'Available Agents' WHERE EventType IN ('HEART_BEAT','STATE_CHANGE') AND CurrentAgentSnapshot.AgentStatus.Name = 'Available' TIMESERIES 5 minutes"
+                            }
+                        ],
+                        "yAxisLeft": {
+                            "zero": true
+                        }
+                    },
+                    "linkedEntityGuids": null
+                },
+                {
+                    "visualization": {
+                        "id": "viz.line"
+                    },
+                    "layout": {
+                        "column": 4,
+                        "row": 1,
+                        "height": 3,
+                        "width": 4
+                    },
+                    "title": "Available Agents Per Queue",
+                    "rawConfiguration": {
+                        "legend": {
+                            "enabled": true
+                        },
+                        "nrqlQueries": [
+                            {
+                                "accountId": 999999,
+                                "query": "from Log SELECT uniqueCount(CurrentAgentSnapshot.Configuration.Username) AS 'Available Agents' WHERE EventType IN ('HEART_BEAT','STATE_CHANGE') AND CurrentAgentSnapshot.AgentStatus.Name = 'Available' TIMESERIES 5 minutes"
+                            }
+                        ],
+                        "yAxisLeft": {
+                            "zero": true
+                        }
+                    },
+                    "linkedEntityGuids": null
+                }
+            ]
+        }
+    ]
+}
