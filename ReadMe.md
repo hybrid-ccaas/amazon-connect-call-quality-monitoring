@@ -4,7 +4,8 @@
 
 ### CCP URL
 
-This parameter is the URL you use to access the Contact Control Panel. For example, if your instance is named 'monitoring-test' it would be https://monitoring-test.awsapps.com/connect/ccp-v2
+This parameter is the URL you use to access the Contact Control Panel. 
+For example, if your instance is named 'monitoring-test' it would be `https://monitoring-test.awsapps.com/connect/ccp-v2`
 
 ### SAML URL
 
@@ -14,7 +15,7 @@ Then click deploy! For a guide with pictures please follow the link to our [GitH
 
 ### New Relic
 
-- New Relic Firehose Endpoint: https://aws-api.newrelic.com/firehose/v1
+- New Relic Firehose Endpoint: `https://aws-api.newrelic.com/firehose/v1`
 - NewRelicKey: New Relic Insight insert API key
 ## Post-Deploy Steps
 
@@ -31,9 +32,9 @@ The custom, metrics-enabled softphone is hosted on Cloudfront. To access the cus
 
 ### Import New Relic Dashboard 
 
-- Login to New Relic https://one.newrelic.com/
+- Login to [New Relic](https://one.newrelic.com/)
 
-- Import dashboard  (replace accountId in the json with your New Relic Account Id)
+- Import dashboard  (Replace accountId in the json with your New Relic Account Id)
 
-    https://github.com/haihongren/amazon-connect-call-quality-monitoring/tree/master/dashboard
+    [Dashboard Link](https://github.com/haihongren/amazon-connect-call-quality-monitoring/tree/master/dashboard)
 
