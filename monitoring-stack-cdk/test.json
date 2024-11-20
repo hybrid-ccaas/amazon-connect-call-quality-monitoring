@@ -385,7 +385,7 @@ Resources:
         Fn::GetAtt:
           - SARCustomResourceConfirmerProviderframeworkonEventServiceRoleE887C6E8
           - Arn
-      Runtime: nodejs10.x
+      Runtime: nodejs18.x
       Description: AWS CDK resource provider framework - onEvent (ConnectMonitoringStack/SAR Custom Resource Confirmer Provider)
       Environment:
         Variables:
