@@ -317,7 +317,7 @@ Resources:
           ProjectName:
             Ref: CDKBuilderA2E6D800
       Handler: index.handler
-      Runtime: nodejs12.x
+      Runtime: nodejs18.x
       Timeout: 900
     DependsOn:
       - CodeBuildTriggerServiceRoleDefaultPolicy10D513D6
